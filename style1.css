@@ -1,0 +1,45 @@
+*
+{
+    margin: 0;
+    padding: 0;
+
+    background-color: bisque;
+}
+input
+{
+    width: 100%;
+
+    border: 1px solid;
+    border-radius: 2px;
+    padding: 3px 0px;
+    background-color: white;
+}
+input[type="submit"]
+{
+    background-color: grey;
+    color: white;
+}
+p
+{
+    text-align: center;
+}
+p, input
+{
+    margin-bottom: 10px;
+}
+p, label
+{
+    font-weight: bold;
+}
+form #emailerror, #passworderror, #repeaterror
+{
+    float: right;
+    color: red;
+}
+
+#registration
+{
+    width: 25%;
+
+    margin: 15px auto;
+}

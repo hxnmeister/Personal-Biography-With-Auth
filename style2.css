@@ -1,0 +1,23 @@
+*
+{
+    margin: 0;
+    padding: 0;
+
+    background-color: bisque;
+}
+input
+{
+    width: 100%;
+
+    border: 1px solid;
+    border-radius: 2px;
+    padding: 3px 0px;
+    background-color: white;
+}
+input[type="submit"]
+{
+    background-color: grey;
+    color: white;
+}
+
+#
