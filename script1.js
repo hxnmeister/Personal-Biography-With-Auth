@@ -16,6 +16,12 @@ const expirationDate = new Date(currentDate.setUTCMinutes(currentDate.getUTCMinu
 // const deleteCookie = (cookieName) =>  document.cookie = cookieName + "=; max-age=-1;";
 // deleteCookie("email");
 
+const getCookie = (cookieName) => 
+{
+    let matches = document.cookie.match(new RegExp("(?:^|; )" + cookieName.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"));
+    
+    return matches ? decodeURIComponent(matches[1]) : undefined;
+}
 const signUpPressed = (event) =>
 {
     event.preventDefault();
@@ -35,7 +41,7 @@ const signUpPressed = (event) =>
     }
 
 }
-const checkCookie = () => { if(document.cookie) window.location.replace("/index2.html"); }
+const checkCookie = () => { if(getCookie("email") !== undefined) window.location.replace("/index2.html"); }
 
 form.addEventListener("submit", signUpPressed);
 window.addEventListener("load", checkCookie);
