@@ -1,50 +1,41 @@
+const repeatPassError = document.getElementById("passrepeat");
+const passwordError = document.getElementById("upassword");
+const emailError = document.getElementById("umail");
 const form = document.forms.signup;
+
 const email = form.elements.useremail;
 const password = form.elements.userpassword;
 const repeatpass = form.elements.passrepeat;
 
-const emailerror = document.getElementById("emailerror");
-const passworderror = document.getElementById("passworderror");
-const repeatpasserror = document.getElementById("repeaterror");
-
 const checkEmailExpression = /^[a-zA-Z0-9_.-]{3,}@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
 const checkPasswordExpression = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{6,}$/;
 
-const SignUpPressed = (event) =>
+const currentDate = new Date(Date.now() + 3600000);
+const expirationDate = new Date(currentDate.setUTCMinutes(currentDate.getUTCMinutes() - currentDate.getTimezoneOffset())).toUTCString();
+
+// const deleteCookie = (cookieName) =>  document.cookie = cookieName + "=; max-age=-1;";
+// deleteCookie("email");
+
+const signUpPressed = (event) =>
 {
     event.preventDefault();
 
-    if(email.value.match(checkEmailExpression))
+    const isValidEmail = email.value.match(checkEmailExpression);
+    const isValidPassword = password.value.match(checkPasswordExpression);
+    const isPasswordMatch = password.value === repeatpass.value;
+
+    !isValidEmail ? emailError.classList.add("emailerror") : emailError.classList.remove("emailerror");
+    !isValidPassword ? passwordError.classList.add("passworderror") : passwordError.classList.remove("passworderror");
+    !isPasswordMatch ? repeatPassError.classList.add("repeaterror") : repeatPassError.classList.remove("repeaterror");
+
+    if(isValidEmail && isValidPassword && isPasswordMatch)
     {
-        if(!emailerror.hidden) emailerror.hidden = true;
-
-        if(password.value.match(checkPasswordExpression))
-        {
-            if(!passworderror.hidden) passworderror.hidden = true;
-
-            if(password.value === repeatpass.value)
-            {
-                if(!repeatpasserror.hidden) repeatpasserror.hidden = true;
-
-                window.location.replace("/index2.html");
-                alert("+");
-            }
-            else
-            {
-                repeatpasserror.hidden = false;
-            }
-        }
-        else
-        {
-            passworderror.hidden = false;
-        }
+        document.cookie = `email=${email.value}; expires=${expirationDate}; path=/`;
+        window.location.replace("/index2.html");
     }
-    else
-    {
-        emailerror.hidden = false;
-    }
-
 
 }
+const checkCookie = () => { if(document.cookie) window.location.replace("/index2.html"); }
 
-form.addEventListener("submit", SignUpPressed);
+form.addEventListener("submit", signUpPressed);
+window.addEventListener("load", checkCookie);

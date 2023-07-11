@@ -31,15 +31,28 @@ p, label
 {
     font-weight: bold;
 }
-form #emailerror, #passworderror, #repeaterror
-{
-    float: right;
-    color: red;
-}
 
 #registration
 {
     width: 25%;
 
     margin: 15px auto;
+}
+
+::after
+{
+    float: right;
+    color: red;
+}
+.emailerror::after
+{
+    content: "Incorrect Email!";
+}
+.passworderror::after
+{
+    content: "Ivalid Password!";
+}
+.repeaterror::after
+{
+    content: "Passwords Must Match!";
 }

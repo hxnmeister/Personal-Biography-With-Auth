@@ -4,31 +4,33 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="style2.css">
-        <title>Document</title>
+        <title>Biography</title>
     </head>
     <body>
         <div id="userinfo">
-            <p>User info</p>
+            <div id="currentuser">
+                <p id="currentuserinfo"></p>
+                <a href="/" id="endsessionbutton">exit</a>
+            </div>
+            <p id="biographytitle">User info</p>
             <form id="biography">
-                <label for="firstname">First Name:</label>
-                <input type="text" id="firstname">
-                <label for="lastname">Last Name:</label>
-                <input type="text" id="lastname">
-                <br>
+                <label for="firstname" id="fname">First Name:</label>
+                <input type="text" id="firstname" required>
+                <label for="lastname" id="lname">Last Name:</label>
+                <input type="text" id="lastname" required>
 
-                <label for="birthyear">Year of Birth:</label>
-                <input type="text" id="birthyear">
+                <label for="birthyear" id="byear">Year of Birth:</label>
+                <input type="text" id="birthyear" required>
                 <label for="gender">Gender:</label>
-                <select id="gender">
+                <select id="gender" required>
                     <option value="">Choose an Option!</option>
                     <option value="male">Male</option>
                     <option value="female">Female</option>
                 </select>
-                <br>
 
-                <label for="phone">Phone Number:</label>
+                <label for="phone" id="pnumber">Phone Number:</label>
                 <input type="text" id="phone">
-                <label for="skype">Skype:</label>
+                <label for="skype" id="slogin">Skype:</label>
                 <input type="text" id="skype">
 
                 <input type="submit" value="Save">
