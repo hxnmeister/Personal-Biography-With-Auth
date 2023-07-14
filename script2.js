@@ -74,8 +74,6 @@ const savePressed = (event) =>
         document.cookie = `skype=${skypeLogin.value}; expires=${expirationDate}; path=/`;
 
         alert("Information about user was recorded!");
-        alert(document.cookie);
-        alert(getCookie("gender"));
     }
 }
 
